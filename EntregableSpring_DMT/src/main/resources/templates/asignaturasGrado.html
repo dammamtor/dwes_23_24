@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/bootstrap::head(title='Asignaturas del alumno')}"></head>
+<body>
+<div class="container mt-5">
+    <div class="row mt-5 justify-content-center">
+        <header th:insert="~{fragments/parts::menu}"></header>
+        <div class="col-8">
+            <h3 class="text-center mt-3" th:text="'Lista de matriculas: ' + ${grado.nombre}"></h3>
+            <table class="table table-stripped table-hover">
+                <thead class="table-light">
+                <tr>
+                    <th>Asignatura</th>
+                    <th>Alumno</th>
+                    <th>Nota</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="m : ${grado.matriculaciones}">
+                    <td th:text="${m.asignaturas.nombre}"></td>
+                    <td th:text="${m.alumnos.nombre}"></td>
+                    <td th:text="${m.nota}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer th:replace="~{fragments/parts::footer(info='menu.subject')}"></footer>
+    </div>
+</div>
+</body>
+</html>
